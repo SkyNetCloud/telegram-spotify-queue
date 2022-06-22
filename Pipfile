@@ -7,9 +7,10 @@ verify_ssl = true
 
 [packages]
 python-telegram-bot = "*"
+spotipy = "*"
 gevent = "*"
 requests = "*"
 six = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
