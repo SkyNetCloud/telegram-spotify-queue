@@ -120,7 +120,7 @@ def play_song(song):
 def pause():
     spotify.pause_playback()
 
-def skip_song(song):
+def skip(song):
   spotify.next_track()
 
 def get_user(message):
@@ -173,7 +173,7 @@ d = tg_updater.dispatcher
 
 d.add_handler(CommandHandler('start', start))
 d.add_handler(CommandHandler('help', start))
-d.add_handler(CommandHandler('skip', skip_song, Filters.user(username="@SkyNetCloud")))
+d.add_handler(CommandHandler('skip', skip, Filters.user(username=config['telegram']['username'])))
 
 d.add_handler(CommandHandler('confirm', confirm_song))
 d.add_handler(MessageHandler(Filters.text, on_message))
