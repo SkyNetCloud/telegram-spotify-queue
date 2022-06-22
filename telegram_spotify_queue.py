@@ -4,7 +4,8 @@ import logging
 from queue import Queue
 import spotipy
 import spotipy.util as sputil
-from telegram.ext import Updater, CommandHandler, MessageHandler
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
 from telegram.ext.filters import Filters
 from threading import Lock, Timer
 
@@ -134,7 +135,7 @@ def get_user(message):
 
 
 # Commands
-def confirm_song(bot, update):
+def confirm_song(update: Update, context: CallbackContext):
     u = get_user(update.message)
     if u.search_result is None:
         update.message.reply_text('You have no active search results. Send me a message to search for a song.')
@@ -146,13 +147,13 @@ def confirm_song(bot, update):
         u.search_result = None
 
 
-def start(bot, update):
+def start(update: Update, context: CallbackContext):
     get_user(update.message)
     update.message.reply_text('Hi! You can send me a song and/or artist name to search for music, then add it to the queue!')
 
 
 # Events
-def on_message(bot, update):
+def on_message(update: Update, context: CallbackContext):
     u = get_user(update.message)
     s = perform_search(u, update.message.text)
 
@@ -165,7 +166,7 @@ def on_message(bot, update):
 
 
 # Set up bot
-tg_updater = Updater(config['telegram']['token'])
+tg_updater = Updater(config['telegram']['token'], use_context=True)
 d = tg_updater.dispatcher
 
 d.add_handler(CommandHandler('start', start))
