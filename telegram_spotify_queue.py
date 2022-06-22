@@ -181,5 +181,5 @@ d.add_handler(MessageHandler(Filters.text, on_message))
 
 if __name__ == '__main__':
     tg_updater.start_polling()
-    logging.info('Bot is nearly ready.')
+    logging.info('Bot is ready.')
     tg_updater.idle()

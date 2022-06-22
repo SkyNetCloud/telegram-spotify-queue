@@ -27,7 +27,7 @@ This is a Telegram bot that uses the Spotify playback API to allow users to queu
 1. Install Python 3.7.
 2. Install pipenv.
 3. Run pipenv sync to install dependencies.
-4. Create the config.ini file, and add a Telegram bot token, and the Spotify OAuth info.
+4. Change info in side the config.ini file, and add a Telegram bot token, and the Spotify OAuth info.
     * You can get the bot token by creating a bot using @BotFather on Telegram.
     * You can get the Spotify OAuth info by creating an application on the Spotify Developer Portal.
 5. Run the bot.
