@@ -120,7 +120,7 @@ def play_song(song):
 def pause():
     spotify.pause_playback()
 
-def skip(song):
+def skip():
   spotify.next_track()
 
 def get_user(message):
